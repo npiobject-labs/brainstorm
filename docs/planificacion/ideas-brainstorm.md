@@ -44,6 +44,14 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 > pedir generar varios promts en distintos momentos y puede ser que ninguno me
 > convenza y sigamos con el brainstorm para refinar el prompt
 
+## Prompt 6 — 2026-09-10
+
+> Sí, Fable 5.1, y cuando descarte un prompt te diré por qué se ha descartado y
+> lo vas anotando en distintas versiones como propones eso es una buena idea
+> recolectar los distintos proms en versiones es un proceso iterativo hasta
+> acercarse al promt que más se acerque a lo que voy buscando y esto que voy
+> buscando te lo pasaré en siguientes conversaciones
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -61,14 +69,16 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 - **Generación bajo demanda**: en cualquier momento, con lo recogido hasta ese
   instante, el usuario pide "genera el prompt". La app nunca genera la app en
   sí, solo el prompt que la desarrollará.
-- **Destino del prompt**: Fable. [SUPUESTO] se refiere al modelo Claude Fable
-  5.1; el prompt se redacta para que lo consuma ese modelo, con su formato y
-  sus convenciones. Plan B si es otra cosa: se ajusta la plantilla de salida,
-  el resto del diseño no cambia.
+- **Destino del prompt**: Claude Fable 5.1 (confirmado en el prompt 6). El
+  prompt se redacta para que lo consuma ese modelo.
 - **Varias generaciones por sesión**: se pueden pedir N prompts en momentos
   distintos. Ninguno tiene por qué convencer; el brainstorm continúa después
   de una generación para refinar. Implica versionado de prompts generados,
   conservar los descartados y poder comparar entre versiones.
+- **Versionado con motivo de descarte** (confirmado): cada prompt generado se
+  guarda como versión. Al descartar uno, el usuario dice por qué, y ese motivo
+  queda anotado junto a la versión. El proceso es iterativo: cada versión
+  arranca de lo aprendido en las anteriores y de sus motivos de rechazo.
 - **Continuidad**: una sesión se puede retomar días después sin perder
   contexto. Implica persistencia del estado de la sesión y una reconstrucción
   del contexto que quepa en la ventana del modelo.
