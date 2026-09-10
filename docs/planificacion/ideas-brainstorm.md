@@ -90,6 +90,14 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 
 Cierre de sesión. Continúa mañana.
 
+## Prompt 8 — 2026-09-10
+
+> Mañana te paso el id correcto de Drive
+
+Pendiente para la próxima sesión: id de la carpeta de Drive. Hasta entonces las
+copias de `docs/planificacion/` no se suben; el repo sigue siendo la única
+fuente de verdad, así que no se pierde nada.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
