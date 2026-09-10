@@ -17,10 +17,19 @@ almacena y ordena, sin proponer arquitectura ni empezar a implementar.
 
 Contenido de producto: ninguno todavía. Solo el método de trabajo.
 
+## Prompt 2 — 2026-09-10
+
+> La app es para gestionar sesiones de brainstorming en equipo, aunque
+> generalmente seremos tus y yo.
+
 ## Requisitos recogidos
 
-(vacío)
+- **Propósito**: gestionar sesiones de brainstorming en equipo.
+- **Escala real de uso**: equipo pequeño; el caso habitual son dos
+  participantes, el usuario y Claude. El multiusuario existe, pero el caso
+  típico es de dos.
 
 ## Dudas abiertas
 
-(vacío)
+- ¿"tus y yo" = "tú y yo", es decir, Claude como participante de la sesión y
+  no solo como herramienta que la registra? Pendiente de confirmar.
