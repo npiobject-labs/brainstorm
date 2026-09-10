@@ -22,14 +22,30 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 > La app es para gestionar sesiones de brainstorming en equipo, aunque
 > generalmente seremos tus y yo.
 
+## Prompt 3 — 2026-09-10
+
+> Sí, tú y yo, participando en la sesión. es importante que tu aportación sea
+> complementaria a lo que yo pueda aportar. Y también es importante que con tu
+> amplia experiencia seas creativo en el planteamiento de esta APP.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
 - **Escala real de uso**: equipo pequeño; el caso habitual son dos
   participantes, el usuario y Claude. El multiusuario existe, pero el caso
   típico es de dos.
+- **Claude es participante, no secretario**: aporta ideas dentro de la sesión,
+  no solo la registra ni la modera.
+- **Complementariedad**: la aportación de Claude debe cubrir ángulos que el
+  usuario no cubre, no repetir ni reformular lo suyo. Implica que el sistema
+  tiene que saber qué ha aportado ya el usuario para diferenciarse de ello.
+- **Encargo de diseño**: en la planificación se espera creatividad de Claude en
+  el planteamiento de la app, no una transcripción literal de los requisitos.
 
 ## Dudas abiertas
 
-- ¿"tus y yo" = "tú y yo", es decir, Claude como participante de la sesión y
-  no solo como herramienta que la registra? Pendiente de confirmar.
+- ~~¿Claude participante o solo registro?~~ Resuelto en el prompt 3:
+  participante.
+- ¿Cómo se mide o se fuerza la "complementariedad"? Opciones a explorar en la
+  planificación: roles asignados a Claude, turnos ciegos antes de ver lo del
+  otro, detección de solapamiento entre ideas.
