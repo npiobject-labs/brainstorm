@@ -1,4 +1,4 @@
-# DesdeMovil
+# brainstorm
 
 Plantilla del método "PC arranca, móvil continúa":
 
