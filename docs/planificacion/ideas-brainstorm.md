@@ -7,6 +7,35 @@ No se planifica nada hasta que el usuario diga explícitamente
 Regla de trabajo acordada: varios prompts sucesivos de entrada; Claude solo
 almacena y ordena, sin proponer arquitectura ni empezar a implementar.
 
+## Estado consolidado a 2026-09-10
+
+Qué es la app, en una frase: una herramienta para conducir sesiones de
+brainstorming entre el usuario y Claude cuyo entregable es un prompt de
+desarrollo para Claude Fable 5.1, refinado por versiones hasta dar con el que
+convence.
+
+Piezas confirmadas hasta ahora:
+
+1. **Sesión de brainstorming en equipo**, con el caso real de dos
+   participantes: el usuario y Claude.
+2. **Claude participa**, no transcribe. Aporta ideas propias y saca dudas y
+   funcionalidades a la mesa por iniciativa suya.
+3. **Complementariedad obligatoria**: lo que aporta Claude debe cubrir lo que
+   el usuario no cubre. El sistema necesita saber qué hay ya sobre la mesa.
+4. **Persistencia entre días**: una sesión se retoma pasados días sin perder
+   contexto.
+5. **Generación bajo demanda**: en cualquier momento, con lo recogido hasta
+   ese punto, se pide un prompt. La app produce el prompt, nunca la app.
+6. **Iteración versionada**: varias generaciones por sesión, cada una guardada
+   como versión, con el motivo de descarte anotado cuando el usuario la
+   rechaza.
+
+Hueco principal pendiente: los criterios de "lo que busco", que definen cuándo
+un prompt es bueno. El usuario los aportará en sesiones siguientes.
+
+Nada de esto está planificado ni implementado todavía, por decisión expresa
+del usuario. La planificación arranca cuando él la pida.
+
 ## Prompt 1 — 2026-09-10
 
 > Vamos a crear la aplicación de Brainstorm. Yo te voy a ir diciendo cosas, y
@@ -51,6 +80,15 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 > recolectar los distintos proms en versiones es un proceso iterativo hasta
 > acercarse al promt que más se acerque a lo que voy buscando y esto que voy
 > buscando te lo pasaré en siguientes conversaciones
+
+## Prompt 7 — 2026-09-10
+
+> De momento, hoy dejamos aquí la información. Mañana continuaré hablándote
+> sobre esta aplicación de Brainstorm. ahora lo que puedes hacer es un resumen
+> de toda la información que tienes hasta el momento y almacenarla de forma
+> segura
+
+Cierre de sesión. Continúa mañana.
 
 ## Requisitos recogidos
 
