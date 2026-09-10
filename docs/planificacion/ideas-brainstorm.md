@@ -36,6 +36,14 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 > ser interesantes. Como te puedes imaginar el objetivo es generar el mejor
 > promt posible para el desarrollo de una determinada app
 
+## Prompt 5 — 2026-09-10
+
+> La idea es que en cualquier momento, con toda la información recolectada
+> hasta ese punto, hasta ese momento, te pueda pedir generar un prompt, no una
+> APP, sino un prompt para desarrollar esa APP en fable. Evidentemente te puedo
+> pedir generar varios promts en distintos momentos y puede ser que ninguno me
+> convenza y sigamos con el brainstorm para refinar el prompt
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -50,6 +58,17 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 - **Objetivo final de una sesión**: producir el mejor prompt posible para el
   desarrollo de una app concreta. El entregable de la sesión no son las ideas
   sueltas, es un prompt de desarrollo.
+- **Generación bajo demanda**: en cualquier momento, con lo recogido hasta ese
+  instante, el usuario pide "genera el prompt". La app nunca genera la app en
+  sí, solo el prompt que la desarrollará.
+- **Destino del prompt**: Fable. [SUPUESTO] se refiere al modelo Claude Fable
+  5.1; el prompt se redacta para que lo consuma ese modelo, con su formato y
+  sus convenciones. Plan B si es otra cosa: se ajusta la plantilla de salida,
+  el resto del diseño no cambia.
+- **Varias generaciones por sesión**: se pueden pedir N prompts en momentos
+  distintos. Ninguno tiene por qué convencer; el brainstorm continúa después
+  de una generación para refinar. Implica versionado de prompts generados,
+  conservar los descartados y poder comparar entre versiones.
 - **Continuidad**: una sesión se puede retomar días después sin perder
   contexto. Implica persistencia del estado de la sesión y una reconstrucción
   del contexto que quepa en la ventana del modelo.
