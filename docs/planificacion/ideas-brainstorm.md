@@ -28,6 +28,14 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 > complementaria a lo que yo pueda aportar. Y también es importante que con tu
 > amplia experiencia seas creativo en el planteamiento de esta APP.
 
+## Prompt 4 — 2026-09-10
+
+> Las sesiones deben poder retomarse días después sin perder contexto. Y
+> también es importante lo que me has contado referente a que todas las dudas
+> que tengas me las plantees así como sugerencias oh funcionalidades que puedan
+> ser interesantes. Como te puedes imaginar el objetivo es generar el mejor
+> promt posible para el desarrollo de una determinada app
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -39,6 +47,15 @@ Contenido de producto: ninguno todavía. Solo el método de trabajo.
 - **Complementariedad**: la aportación de Claude debe cubrir ángulos que el
   usuario no cubre, no repetir ni reformular lo suyo. Implica que el sistema
   tiene que saber qué ha aportado ya el usuario para diferenciarse de ello.
+- **Objetivo final de una sesión**: producir el mejor prompt posible para el
+  desarrollo de una app concreta. El entregable de la sesión no son las ideas
+  sueltas, es un prompt de desarrollo.
+- **Continuidad**: una sesión se puede retomar días después sin perder
+  contexto. Implica persistencia del estado de la sesión y una reconstrucción
+  del contexto que quepa en la ventana del modelo.
+- **Claude plantea dudas y sugerencias**: durante la sesión, no solo responde.
+  Saca a la mesa dudas abiertas y funcionalidades que podrían ser interesantes,
+  como comportamiento del producto (no solo como estilo de conversación).
 - **Encargo de diseño**: en la planificación se espera creatividad de Claude en
   el planteamiento de la app, no una transcripción literal de los requisitos.
 
