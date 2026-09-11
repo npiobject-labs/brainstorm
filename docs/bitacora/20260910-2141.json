@@ -1,0 +1,49 @@
+{
+  "fecha": "2026-09-10T21:41:00+02:00",
+  "titulo": "Arranque de la recogida de ideas para la app Brainstorm",
+  "objetivo": "Almacenar, prompt a prompt y sin planificar todavía, lo que el usuario va contando sobre la aplicación Brainstorm.",
+  "prompts": [
+    {
+      "texto": "Vamos a crear la aplicación de Brainstorm. Yo te voy a ir diciendo cosas y tú de momento solo tienes que ir almacenándolas. Te voy a enviar varios prompts, no sé cuántos, hasta que en un momento determinado te diga: con toda esta información, genérame una planificación del proyecto."
+    },
+    {
+      "texto": "La app es para gestionar sesiones de brainstorming en equipo, aunque generalmente seremos tú y yo."
+    },
+    {
+      "texto": "Sí, tú y yo, participando en la sesión. Es importante que tu aportación sea complementaria a lo que yo pueda aportar. Y también que con tu amplia experiencia seas creativo en el planteamiento de esta app."
+    },
+    {
+      "texto": "Las sesiones deben poder retomarse días después sin perder contexto. Y es importante que todas las dudas que tengas me las plantees, así como sugerencias o funcionalidades que puedan ser interesantes. El objetivo es generar el mejor prompt posible para el desarrollo de una determinada app."
+    },
+    {
+      "texto": "En cualquier momento, con toda la información recolectada hasta ese punto, te pueda pedir generar un prompt, no una app, sino un prompt para desarrollar esa app en Fable. Te puedo pedir generar varios prompts en distintos momentos y puede ser que ninguno me convenza y sigamos con el brainstorm para refinar el prompt."
+    },
+    {
+      "texto": "Sí, Fable 5.1. Cuando descarte un prompt te diré por qué se ha descartado y lo vas anotando en distintas versiones, como propones. Es un proceso iterativo hasta acercarse al prompt que más se acerque a lo que voy buscando, y eso que busco te lo pasaré en siguientes conversaciones."
+    },
+    {
+      "texto": "De momento, hoy dejamos aquí la información. Mañana continuaré hablándote sobre esta aplicación de Brainstorm. Ahora haz un resumen de toda la información que tienes hasta el momento y almacénala de forma segura."
+    }
+  ],
+  "cambios": [
+    "docs/planificacion/ideas-brainstorm.md: nuevo. Transcripción de los 7 prompts, requisitos extraídos, dudas abiertas y estado consolidado.",
+    "docs/planificacion/sesiones/20260910-2141.md: resumen de la sesión.",
+    "Sin cambios de código: la sesión era solo de recogida."
+  ],
+  "sha": "5321a1b",
+  "sha_completo": "5321a1b4172894c5c0c3e0d9a832f93ad3b3b4b9",
+  "run": null,
+  "mock": null,
+  "build": null,
+  "pagina": null,
+  "fly": null,
+  "pendiente": [
+    "El usuario aportará los criterios de qué hace bueno a un prompt generado.",
+    "Generar la planificación del proyecto cuando el usuario lo pida.",
+    "Fusionar la rama claude/brainstorm-app-tfjj6k en main (PR draft #1)."
+  ],
+  "enlaces": [
+    {"texto": "PR draft #1", "url": "https://github.com/npiobject-labs/brainstorm/pull/1"}
+  ],
+  "notas": "Transcripción de los prompts ligeramente normalizada en puntuación y erratas, sin alterar el contenido. Ninguno contenía datos sensibles. La entrada se crea en la rama de trabajo: no aparecerá en la bitácora publicada hasta que se fusione en main."
+}
