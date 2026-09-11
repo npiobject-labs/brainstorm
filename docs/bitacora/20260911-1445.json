@@ -26,22 +26,28 @@
     "docs/planificacion/sesiones/20260911-1445.md: resumen de esta sesión.",
     "CLAUDE.md: id de la carpeta de Drive corregido."
   ],
-  "sha": "9cb84d7",
-  "sha_completo": "9cb84d7aad60441f58b3806b3b19f7d5b54e9486",
-  "run": null,
+  "sha": "8977d83",
+  "sha_completo": "8977d835a78feafadff3dbb0a4f33d2a22c3f5f1",
+  "run": "34600975844",
   "mock": null,
   "build": null,
-  "pagina": null,
+  "pagina": "bitacora.html",
   "fly": null,
   "pendiente": [
     "Decidir el reparto entre Brainstorm y Navaja: dos apps que se pasan el testigo o una que absorbe el método.",
     "Definir qué cuenta como criterio de salida verificable en un prompt para una app que todavía no existe.",
     "Decidir si se aplica ablación al propio proyecto Brainstorm.",
-    "Generar la planificación cuando el usuario lo pida.",
-    "Fusionar la rama claude/brainstorm-app-tfjj6k en main (PR draft #1); hasta entonces Pages no publica nada de esto."
+    "Generar la planificación cuando el usuario lo pida."
   ],
   "enlaces": [
-    {"texto": "PR draft #1", "url": "https://github.com/npiobject-labs/brainstorm/pull/1"}
+    {
+      "texto": "PR draft #1",
+      "url": "https://github.com/npiobject-labs/brainstorm/pull/1"
+    },
+    {
+      "texto": "Run de Pages verificado en verde",
+      "url": "https://github.com/npiobject-labs/brainstorm/actions/runs/34600975844"
+    }
   ],
   "notas": "Sin mock ni backend en esta sesión: el trabajo es de recogida y documentación. Los prompts están normalizados en puntuación y erratas, sin alterar el contenido. Ninguno contenía datos sensibles."
 }
