@@ -208,6 +208,15 @@ creativo, auditor; la lista queda abierta.
 Vale como convención de la conversación desde ya, y como funcionalidad de la
 app cuando se construya.
 
+## Prompt 13 — 2026-09-11
+
+> respuestas: qué pasa cuando no hay prefijo, que por defecto entiendo que es
+> respuesta normal. = SI; si puedo invocar un rol por iniciativa propia
+> avisándote: si puedes invocar un rol por iniciativa propia; y si se pueden
+> encadenar, tipo: no entiendo las pregunta, replanteala
+
+Dos decisiones y una pregunta mal formulada que se replantea.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -254,6 +263,11 @@ app cuando se construya.
   responde desde ese rol. Roles citados: crítico, analítico, creativo,
   auditor, lista abierta. Es el mecanismo concreto con el que se fuerza la
   complementariedad, que hasta ahora era un principio sin implementación.
+- **Sin prefijo, respuesta normal** (confirmado): la ausencia de prefijo no
+  activa ningún rol.
+- **Claude puede invocar un rol por iniciativa propia** (confirmado), avisando
+  de que lo hace. El rol deja de ser solo una orden del usuario y pasa a ser
+  también una herramienta que Claude usa cuando ve que falta esa lente.
 - **El rol queda asociado a lo aportado**: si cada aportación sabe desde qué
   rol nació, la generación del prompt puede comprobar qué lentes se han
   aplicado y cuáles faltan.
@@ -267,9 +281,10 @@ app cuando se construya.
 - ~~¿Cómo se fuerza la complementariedad?~~ Resuelto en el prompt 12: roles
   invocados por prefijo. Queda por decidir el catálogo cerrado y el
   comportamiento por defecto sin prefijo.
-- Sin prefijo, ¿qué rol aplica? Propuesta: ninguno, respuesta normal.
-- ¿Puede Claude invocar un rol por iniciativa propia, avisando de que lo hace?
-- ¿Se pueden encadenar roles en un mismo turno (`crítico+auditor:`)?
+- ~~Sin prefijo~~ y ~~iniciativa propia de Claude~~: resueltos en el prompt 13.
+- Pendiente, replanteada: ¿se puede pedir más de un rol sobre el mismo
+  mensaje, obteniendo una respuesta por rol, o cada mensaje lleva un rol
+  único?
 - ¿Un rol es solo un tono, o lleva asociada una plantilla de salida propia?
   Un auditor que siempre devuelve hallazgos con severidad es más útil que un
   auditor que solo suena severo.
