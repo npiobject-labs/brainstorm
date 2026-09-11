@@ -142,6 +142,55 @@ Lo que se lee en el mock, como referencia de vocabulario y de método:
   Workflows, Renovación, Arranque y prueba, Exportar, Proyectos. Aparece
   también un "índice de esbeltez" con valor 95/100 y un "mayor lastre".
 
+## Prompt 11 — 2026-09-11
+
+> [adjunta `Manual_metodologia_Boris_Cherny.md` y `Navaja.html`] Te adjunto
+> documentación de el método borischerny y el mock para que los tengas en
+> cuenta como metodología para desarrollar los prompt en brinstorm.
+
+Ambos ficheros quedan guardados en `docs/planificacion/referencias/`
+(`manual-metodologia-boris-cherny.md` y `navaja-mock.html`). Revisados: no
+contienen claves ni datos personales.
+
+### Lo que fija el manual, y que Brainstorm hereda
+
+La tesis: *el cuello de botella ya no es el modelo, sino las ataduras que le
+ponemos. Menos instrucciones, más verificación.*
+
+**Las tres partes de todo prompt** (lo que el usuario llamó objetivo,
+guardarraíles y stop):
+
+```
+Tarea:            <qué resultado se quiere, una o dos frases>
+Límites:          <qué no se puede tocar, restricciones inamovibles>
+Terminado cuando: <comando o métrica verificable, no opinable>
+```
+
+Prohibido incluir pasos intermedios. Si hacen falta pasos, es que el criterio
+de salida está mal definido. Y si la tarea es difícil de verificar, el problema
+no es el prompt: falta el verificador, y se construye antes de lanzar la tarea.
+
+Las diez normas del manual, resumidas: tres partes y nunca pasos; ninguna
+instrucción persistente sin tres fallos medidos; CLAUDE.md de hechos, no de
+procedimientos, en menos de 40 líneas; una skill solo vive si produce el mismo
+resultado siempre; un hook o MCP solo vive si verifica algo o aporta un dato
+externo; verificador automático antes de lanzar; ante fallo repetido se mejora
+primero el verificador; rutinas de una frase que entregan PR; más de veinte
+ficheros o goal drift dispara un workflow; cada generación de modelo dispara
+ablación completa.
+
+### Lo que aporta el mock de Navaja
+
+- Fases del asistente: `Idea, Tarea, Límites, Verificación, Contexto,
+  Herramientas, Resultado`.
+- Catálogo de límites reutilizables, cada uno con su clave: no cambiar la API
+  pública, sin dependencias nuevas sin nota explícita, ningún secreto ni clave
+  en el repo, no tocar la configuración de CI, compatibilidad con los datos ya
+  persistidos, mantener la MSRV declarada, no custodial, importes en msat como
+  enteros, sin cambios visuales fuera del flujo pedido.
+- Navaja ya resuelve la fase de estructurar un prompt a partir de una idea
+  formada. Brainstorm cubre lo de antes: llegar a esa idea entre dos.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -175,10 +224,15 @@ Lo que se lee en el mock, como referencia de vocabulario y de método:
 - **Claude plantea dudas y sugerencias**: durante la sesión, no solo responde.
   Saca a la mesa dudas abiertas y funcionalidades que podrían ser interesantes,
   como comportamiento del producto (no solo como estilo de conversación).
-- **Criterios de calidad de un prompt**: vienen del método Cherny, ya
-  desarrollado por el usuario en su app Navaja / BorisCherny. Un prompt son
-  tres partes: **objetivo, guardarraíles y stop**. El detalle lo aportará el
-  usuario más adelante. Brainstorm no reinventa el criterio: lo adopta.
+- **Criterios de calidad de un prompt**: los fija el método Cherny, entregado
+  en el prompt 11 y guardado en `docs/planificacion/referencias/`. Un prompt
+  son tres partes, tarea, límites y criterio de salida, sin pasos intermedios.
+  Brainstorm no reinventa el criterio: lo adopta como metodología de
+  generación.
+- **Un prompt es verificable o no vale**: el criterio de salida se expresa como
+  comando o métrica. Un prompt generado por Brainstorm sin criterio de salida
+  ejecutable está incompleto por definición, y eso da un test objetivo de
+  calidad, no una impresión.
 - **Encargo de diseño**: en la planificación se espera creatividad de Claude en
   el planteamiento de la app, no una transcripción literal de los requisitos.
 
@@ -197,18 +251,18 @@ Lo que se lee en el mock, como referencia de vocabulario y de método:
   mismo prompt?
 - ~~¿Se anota el motivo de descarte? ¿Se versionan los prompts?~~ Resuelto en
   el prompt 6: sí a las dos.
-- Pendiente del usuario: el detalle del método Cherny (objetivo,
-  guardarraíles, stop). Lo esencial ya está nombrado en el prompt 10; falta la
-  definición precisa de cada parte.
-- [SUPUESTO] "otra app que ya tienes" no está en esta sesión: BorisCherny /
-  Navaja vive como fichero local en el PC del usuario y no figura entre los
-  repositorios de GitHub a los que se tiene acceso. Plan B: que el usuario
-  pegue los criterios, suba el HTML del mock, o publique ese proyecto en
-  GitHub para poder leerlo.
-- ¿Brainstorm y Navaja son dos apps separadas que se pasan el testigo
-  (Brainstorm produce el prompt, Navaja lo estructura y lo verifica), o
-  Brainstorm absorbe el método Cherny y genera ya el prompt en sus tres
-  partes? Esto cambia el alcance.
+- ~~Detalle del método Cherny~~: entregado en el prompt 11.
+- ¿Brainstorm y Navaja son dos apps separadas que se pasan el testigo, o
+  Brainstorm absorbe el método y genera ya el prompt en sus tres partes? Sigue
+  abierta, y el manual la agudiza: Navaja ya cubre de la idea al prompt, así
+  que el hueco propio de Brainstorm es lo anterior, llegar a la idea entre dos.
+- El manual exige que el criterio de salida sea verificable. Para una app que
+  todavía no existe no hay comando que ejecutar. ¿Qué cuenta como criterio de
+  salida en un prompt de creación desde cero: los tests que la app deberá
+  pasar, una captura, un guion de prueba manual?
+- El propio método pide ablación: ¿se aplica a Brainstorm consigo misma, es
+  decir, arrancar con el CLAUDE.md mínimo y añadir solo lo que falle tres
+  veces?
 - Si el prompt generado sigue el método, ¿el entregable incluye también el
   CLAUDE.md mínimo, los verificadores y el comando de arranque, como en
   Navaja, o solo el texto del prompt?
