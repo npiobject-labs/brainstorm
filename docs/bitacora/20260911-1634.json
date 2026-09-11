@@ -1,0 +1,42 @@
+{
+  "fecha": "2026-09-11T16:34:00+02:00",
+  "titulo": "Roles por prefijo: el mecanismo que fuerza la complementariedad",
+  "objetivo": "Definir cómo participa Claude en el brainstorm adoptando roles distintos, y cerrar las decisiones sueltas sobre ese mecanismo.",
+  "prompts": [
+    {
+      "texto": "Quiero que cuando participes en el brainstorm adoptes distintos roles: crítico, analítico, creativo y otros. Cuando yo ponga delante de mi prompt, por ejemplo 'crítico:', lo que lance en ese prompt lo contestas de forma crítica. Si pongo 'auditor:', adoptas el rol de auditor. Dime si lo has entendido y si te parece buena idea."
+    },
+    {
+      "texto": "Respuestas: sin prefijo, respuesta normal, sí. Sí puedes invocar un rol por iniciativa propia. Y lo de encadenar roles no entiendo la pregunta, replantéala."
+    },
+    {
+      "texto": "La segunda.",
+      "nota": "Respuesta a la pregunta replanteada: elige poder pedir varios roles en un mismo mensaje, con un bloque por rol, frente a un rol único por mensaje."
+    },
+    {
+      "texto": "Cierra sesión."
+    }
+  ],
+  "cambios": [
+    "docs/planificacion/ideas-brainstorm.md: prompts 12 a 14, con el mecanismo de roles como requisito y el riesgo de contaminación entre bloques encadenados anotado.",
+    "docs/planificacion/sesiones/20260911-1634.md: resumen de esta sesión.",
+    "Resuelta la duda de cómo forzar la complementariedad, abierta desde el primer día."
+  ],
+  "sha": null,
+  "sha_completo": null,
+  "run": null,
+  "mock": null,
+  "build": null,
+  "pagina": "bitacora.html",
+  "fly": null,
+  "pendiente": [
+    "Cerrar el catálogo de roles y decidir si cada uno lleva plantilla de salida propia.",
+    "Decidir si la app genera los bloques de roles encadenados de forma independiente, para que el segundo no se alinee con el primero.",
+    "Decidir el reparto entre Brainstorm y Navaja.",
+    "Definir qué cuenta como criterio de salida verificable para una app que todavía no existe.",
+    "Decidir si se aplica ablación al propio proyecto Brainstorm.",
+    "Generar la planificación cuando el usuario lo pida."
+  ],
+  "enlaces": [],
+  "notas": "Segunda sesión del día; la anterior cerró a las 14:45. Sin mock ni backend: el trabajo sigue siendo de recogida. Los prompts están normalizados en puntuación, sin alterar el contenido."
+}
