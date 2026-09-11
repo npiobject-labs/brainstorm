@@ -217,6 +217,13 @@ app cuando se construya.
 
 Dos decisiones y una pregunta mal formulada que se replantea.
 
+## Prompt 14 — 2026-09-11
+
+> la segunda
+
+Elige encadenar varios roles en un mismo mensaje: `crítico, auditor:` devuelve
+una respuesta con un bloque por rol, cada uno con su lectura.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -268,6 +275,9 @@ Dos decisiones y una pregunta mal formulada que se replantea.
 - **Claude puede invocar un rol por iniciativa propia** (confirmado), avisando
   de que lo hace. El rol deja de ser solo una orden del usuario y pasa a ser
   también una herramienta que Claude usa cuando ve que falta esa lente.
+- **Varios roles por mensaje** (confirmado): el usuario puede pedir dos o más
+  roles a la vez y recibe un bloque por rol en la misma respuesta, no una
+  mezcla. Cada bloque se atribuye a su rol de forma visible.
 - **El rol queda asociado a lo aportado**: si cada aportación sabe desde qué
   rol nació, la generación del prompt puede comprobar qué lentes se han
   aplicado y cuáles faltan.
@@ -282,9 +292,13 @@ Dos decisiones y una pregunta mal formulada que se replantea.
   invocados por prefijo. Queda por decidir el catálogo cerrado y el
   comportamiento por defecto sin prefijo.
 - ~~Sin prefijo~~ y ~~iniciativa propia de Claude~~: resueltos en el prompt 13.
-- Pendiente, replanteada: ¿se puede pedir más de un rol sobre el mismo
-  mensaje, obteniendo una respuesta por rol, o cada mensaje lleva un rol
-  único?
+- ~~¿Varios roles por mensaje?~~ Resuelto en el prompt 14: sí, un bloque por
+  rol.
+- Riesgo conocido de los roles encadenados: el segundo bloque se redacta
+  habiendo visto el primero y tiende a alinearse con él. En la app se puede
+  evitar generando cada bloque de forma independiente y mostrándolos después;
+  en la conversación, no. Pendiente decidir si eso es aceptable o si el
+  producto debe forzar la independencia.
 - ¿Un rol es solo un tono, o lleva asociada una plantilla de salida propia?
   Un auditor que siempre devuelve hallazgos con severidad es más útil que un
   auditor que solo suena severo.
