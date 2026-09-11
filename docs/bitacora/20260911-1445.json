@@ -1,0 +1,47 @@
+{
+  "fecha": "2026-09-11T14:45:00+02:00",
+  "titulo": "El método Cherny entra como metodología de generación de prompts",
+  "objetivo": "Resolver la carpeta de Drive y recoger los criterios que hacen bueno a un prompt, que el usuario ya tenía desarrollados en su método Boris Cherny.",
+  "prompts": [
+    {
+      "texto": "Puedes obtener de ahí el id, he creado la carpeta nueva.",
+      "nota": "Acompañado de una captura de Google Drive con la URL de la carpeta."
+    },
+    {
+      "texto": "Los criterios que hacen bueno a un prompt los tengo ya desarrollados en otra app que ya tienes. La app se llama Boris Cherny. Lo que viene a decir es que un prompt consta de tres partes fundamentales, que son el objetivo, los guardarraíles y el stop, pero todo eso te lo voy a dar de forma más detallada más adelante. Te adjunto un mock de la aplicación BorisCherny."
+    },
+    {
+      "texto": "Te adjunto documentación del método BorisCherny y el mock, para que los tengas en cuenta como metodología para desarrollar los prompts en Brainstorm.",
+      "nota": "Adjuntos: el manual de la metodología en Markdown y el mock Navaja.html."
+    },
+    {
+      "texto": "Cierra la sesión: resumen de 5 líneas en docs/planificacion/sesiones/ y entrada nueva en docs/bitacora/AAAAMMDD-HHMM.json con objetivo, los prompts de esta sesión, qué cambió, SHA, run de Actions, mock archivado y URL de Fly si aplica. Push, verifica que Pages queda en verde, y sube la copia a Drive."
+    }
+  ],
+  "cambios": [
+    "docs/planificacion/ideas-brainstorm.md: prompts 9 a 11, el método Cherny como criterio de calidad heredado, y tres dudas de alcance nuevas.",
+    "docs/planificacion/ideas-brainstorm.md: restauradas tres dudas abiertas que un reemplazo de texto fallido había perdido en la sesión anterior.",
+    "docs/planificacion/referencias/manual-metodologia-boris-cherny.md: manual del método, aportado por el usuario.",
+    "docs/planificacion/referencias/navaja-mock.html: mock de la app Navaja, revisado antes de commitear (sin claves ni rutas locales).",
+    "docs/planificacion/sesiones/20260911-1445.md: resumen de esta sesión.",
+    "CLAUDE.md: id de la carpeta de Drive corregido."
+  ],
+  "sha": null,
+  "sha_completo": null,
+  "run": null,
+  "mock": null,
+  "build": null,
+  "pagina": null,
+  "fly": null,
+  "pendiente": [
+    "Decidir el reparto entre Brainstorm y Navaja: dos apps que se pasan el testigo o una que absorbe el método.",
+    "Definir qué cuenta como criterio de salida verificable en un prompt para una app que todavía no existe.",
+    "Decidir si se aplica ablación al propio proyecto Brainstorm.",
+    "Generar la planificación cuando el usuario lo pida.",
+    "Fusionar la rama claude/brainstorm-app-tfjj6k en main (PR draft #1); hasta entonces Pages no publica nada de esto."
+  ],
+  "enlaces": [
+    {"texto": "PR draft #1", "url": "https://github.com/npiobject-labs/brainstorm/pull/1"}
+  ],
+  "notas": "Sin mock ni backend en esta sesión: el trabajo es de recogida y documentación. Los prompts están normalizados en puntuación y erratas, sin alterar el contenido. Ninguno contenía datos sensibles."
+}
