@@ -9,7 +9,7 @@ Flujo "PC arranca, móvil continúa": el desarrollo, la revisión y las pruebas 
 | Proyecto | `brainstorm` |
 | Owner de GitHub | `npiobject-labs` |
 | App de Fly.io | `brainstorm-npiobject-labs` |
-| Carpeta de Drive (id) | `1SVJ1Nxe1Nu1Q2AggnkVwXAQPcis6pmig` |
+| Carpeta de Drive (id) | `1FithJGx3HLgPd9H-1VEgwxEfe90Yn1q6` |
 
 Esta tabla la rellena sola `.github/workflows/init-plantilla.yml` en el primer push de un repo creado desde la plantilla; no hay nada que tocar a mano salvo el id de Drive.
 

@@ -98,6 +98,13 @@ Pendiente para la próxima sesión: id de la carpeta de Drive. Hasta entonces la
 copias de `docs/planificacion/` no se suben; el repo sigue siendo la única
 fuente de verdad, así que no se pierde nada.
 
+## Prompt 9 — 2026-09-11
+
+> [captura de Drive] puedes obtener de ahí el ID he creado la carpeta nueva
+
+Carpeta `Mi unidad > brainstotm`, id `1FithJGx3HLgPd9H-1VEgwxEfe90Yn1q6`.
+Verificada con acceso de escritura y anotada en `CLAUDE.md`.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -141,3 +148,14 @@ fuente de verdad, así que no se pierde nada.
 - ¿Cómo se mide o se fuerza la "complementariedad"? Opciones a explorar en la
   planificación: roles asignados a Claude, turnos ciegos antes de ver lo del
   otro, detección de solapamiento entre ideas.
+- Retomar días después: ¿se recarga la transcripción entera o un resumen
+  destilado? Con sesiones largas la transcripción íntegra no cabrá.
+- ¿El prompt generado es un texto único o un documento estructurado por
+  secciones (objetivo, alcance, stack, pantallas, criterios de aceptación)?
+- ¿Una sesión equivale a una app, o varias sesiones pueden converger en el
+  mismo prompt?
+- ~~¿Se anota el motivo de descarte? ¿Se versionan los prompts?~~ Resuelto en
+  el prompt 6: sí a las dos.
+- Pendiente del usuario: los criterios de "lo que voy buscando", es decir,
+  contra qué se juzga si un prompt se acerca o no. Sin eso no hay criterio de
+  aceptación del entregable.
