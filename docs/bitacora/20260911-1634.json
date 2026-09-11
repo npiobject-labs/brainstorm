@@ -22,9 +22,9 @@
     "docs/planificacion/sesiones/20260911-1634.md: resumen de esta sesión.",
     "Resuelta la duda de cómo forzar la complementariedad, abierta desde el primer día."
   ],
-  "sha": null,
-  "sha_completo": null,
-  "run": null,
+  "sha": "71582b2",
+  "sha_completo": "71582b24c2afa32ded2825c26090be612ddb687b",
+  "run": "34610966512",
   "mock": null,
   "build": null,
   "pagina": "bitacora.html",
@@ -37,6 +37,11 @@
     "Decidir si se aplica ablación al propio proyecto Brainstorm.",
     "Generar la planificación cuando el usuario lo pida."
   ],
-  "enlaces": [],
+  "enlaces": [
+    {
+      "texto": "Run de Pages verificado en verde",
+      "url": "https://github.com/npiobject-labs/brainstorm/actions/runs/34610966512"
+    }
+  ],
   "notas": "Segunda sesión del día; la anterior cerró a las 14:45. Sin mock ni backend: el trabajo sigue siendo de recogida. Los prompts están normalizados en puntuación, sin alterar el contenido."
 }
