@@ -191,6 +191,39 @@ ablación completa.
 - Navaja ya resuelve la fase de estructurar un prompt a partir de una idea
   formada. Brainstorm cubre lo de antes: llegar a esa idea entre dos.
 
+## Prompt 12 — 2026-09-11
+
+> Quiero que tú cuando participes en el brainstorm adoptes distintos roles.
+> Estos roles pueden ser de tipo crítico, analítico, puede ser creativo, puede
+> ser, pues, otra serie de roles. ¿Cómo lo vamos a hacer? Pues, cuando yo ponga
+> delante de mi prompt, por ejemplo, crítico:, lo que te pregunte o lo que
+> lance en ese prompt, tú vas a contestar de forma crítica. Si pongo auditor: y
+> un comentario, tú vas a adoptar el rol de auditor. Dime si lo has entendido
+> y, si te parece buena idea.
+
+**Mecanismo**: prefijo `rol:` al principio del prompt del usuario. Lo que sigue
+se responde desde ese rol. Roles nombrados por el usuario: crítico, analítico,
+creativo, auditor; la lista queda abierta.
+
+Vale como convención de la conversación desde ya, y como funcionalidad de la
+app cuando se construya.
+
+## Prompt 13 — 2026-09-11
+
+> respuestas: qué pasa cuando no hay prefijo, que por defecto entiendo que es
+> respuesta normal. = SI; si puedo invocar un rol por iniciativa propia
+> avisándote: si puedes invocar un rol por iniciativa propia; y si se pueden
+> encadenar, tipo: no entiendo las pregunta, replanteala
+
+Dos decisiones y una pregunta mal formulada que se replantea.
+
+## Prompt 14 — 2026-09-11
+
+> la segunda
+
+Elige encadenar varios roles en un mismo mensaje: `crítico, auditor:` devuelve
+una respuesta con un bloque por rol, cada uno con su lectura.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -233,6 +266,21 @@ ablación completa.
   comando o métrica. Un prompt generado por Brainstorm sin criterio de salida
   ejecutable está incompleto por definición, y eso da un test objetivo de
   calidad, no una impresión.
+- **Roles por prefijo**: el usuario antepone `rol:` a su mensaje y Claude
+  responde desde ese rol. Roles citados: crítico, analítico, creativo,
+  auditor, lista abierta. Es el mecanismo concreto con el que se fuerza la
+  complementariedad, que hasta ahora era un principio sin implementación.
+- **Sin prefijo, respuesta normal** (confirmado): la ausencia de prefijo no
+  activa ningún rol.
+- **Claude puede invocar un rol por iniciativa propia** (confirmado), avisando
+  de que lo hace. El rol deja de ser solo una orden del usuario y pasa a ser
+  también una herramienta que Claude usa cuando ve que falta esa lente.
+- **Varios roles por mensaje** (confirmado): el usuario puede pedir dos o más
+  roles a la vez y recibe un bloque por rol en la misma respuesta, no una
+  mezcla. Cada bloque se atribuye a su rol de forma visible.
+- **El rol queda asociado a lo aportado**: si cada aportación sabe desde qué
+  rol nació, la generación del prompt puede comprobar qué lentes se han
+  aplicado y cuáles faltan.
 - **Encargo de diseño**: en la planificación se espera creatividad de Claude en
   el planteamiento de la app, no una transcripción literal de los requisitos.
 
@@ -240,9 +288,20 @@ ablación completa.
 
 - ~~¿Claude participante o solo registro?~~ Resuelto en el prompt 3:
   participante.
-- ¿Cómo se mide o se fuerza la "complementariedad"? Opciones a explorar en la
-  planificación: roles asignados a Claude, turnos ciegos antes de ver lo del
-  otro, detección de solapamiento entre ideas.
+- ~~¿Cómo se fuerza la complementariedad?~~ Resuelto en el prompt 12: roles
+  invocados por prefijo. Queda por decidir el catálogo cerrado y el
+  comportamiento por defecto sin prefijo.
+- ~~Sin prefijo~~ y ~~iniciativa propia de Claude~~: resueltos en el prompt 13.
+- ~~¿Varios roles por mensaje?~~ Resuelto en el prompt 14: sí, un bloque por
+  rol.
+- Riesgo conocido de los roles encadenados: el segundo bloque se redacta
+  habiendo visto el primero y tiende a alinearse con él. En la app se puede
+  evitar generando cada bloque de forma independiente y mostrándolos después;
+  en la conversación, no. Pendiente decidir si eso es aceptable o si el
+  producto debe forzar la independencia.
+- ¿Un rol es solo un tono, o lleva asociada una plantilla de salida propia?
+  Un auditor que siempre devuelve hallazgos con severidad es más útil que un
+  auditor que solo suena severo.
 - Retomar días después: ¿se recarga la transcripción entera o un resumen
   destilado? Con sesiones largas la transcripción íntegra no cabrá.
 - ¿El prompt generado es un texto único o un documento estructurado por
