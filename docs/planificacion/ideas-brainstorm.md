@@ -191,6 +191,23 @@ ablación completa.
 - Navaja ya resuelve la fase de estructurar un prompt a partir de una idea
   formada. Brainstorm cubre lo de antes: llegar a esa idea entre dos.
 
+## Prompt 12 — 2026-09-11
+
+> Quiero que tú cuando participes en el brainstorm adoptes distintos roles.
+> Estos roles pueden ser de tipo crítico, analítico, puede ser creativo, puede
+> ser, pues, otra serie de roles. ¿Cómo lo vamos a hacer? Pues, cuando yo ponga
+> delante de mi prompt, por ejemplo, crítico:, lo que te pregunte o lo que
+> lance en ese prompt, tú vas a contestar de forma crítica. Si pongo auditor: y
+> un comentario, tú vas a adoptar el rol de auditor. Dime si lo has entendido
+> y, si te parece buena idea.
+
+**Mecanismo**: prefijo `rol:` al principio del prompt del usuario. Lo que sigue
+se responde desde ese rol. Roles nombrados por el usuario: crítico, analítico,
+creativo, auditor; la lista queda abierta.
+
+Vale como convención de la conversación desde ya, y como funcionalidad de la
+app cuando se construya.
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -233,6 +250,13 @@ ablación completa.
   comando o métrica. Un prompt generado por Brainstorm sin criterio de salida
   ejecutable está incompleto por definición, y eso da un test objetivo de
   calidad, no una impresión.
+- **Roles por prefijo**: el usuario antepone `rol:` a su mensaje y Claude
+  responde desde ese rol. Roles citados: crítico, analítico, creativo,
+  auditor, lista abierta. Es el mecanismo concreto con el que se fuerza la
+  complementariedad, que hasta ahora era un principio sin implementación.
+- **El rol queda asociado a lo aportado**: si cada aportación sabe desde qué
+  rol nació, la generación del prompt puede comprobar qué lentes se han
+  aplicado y cuáles faltan.
 - **Encargo de diseño**: en la planificación se espera creatividad de Claude en
   el planteamiento de la app, no una transcripción literal de los requisitos.
 
@@ -240,9 +264,15 @@ ablación completa.
 
 - ~~¿Claude participante o solo registro?~~ Resuelto en el prompt 3:
   participante.
-- ¿Cómo se mide o se fuerza la "complementariedad"? Opciones a explorar en la
-  planificación: roles asignados a Claude, turnos ciegos antes de ver lo del
-  otro, detección de solapamiento entre ideas.
+- ~~¿Cómo se fuerza la complementariedad?~~ Resuelto en el prompt 12: roles
+  invocados por prefijo. Queda por decidir el catálogo cerrado y el
+  comportamiento por defecto sin prefijo.
+- Sin prefijo, ¿qué rol aplica? Propuesta: ninguno, respuesta normal.
+- ¿Puede Claude invocar un rol por iniciativa propia, avisando de que lo hace?
+- ¿Se pueden encadenar roles en un mismo turno (`crítico+auditor:`)?
+- ¿Un rol es solo un tono, o lleva asociada una plantilla de salida propia?
+  Un auditor que siempre devuelve hallazgos con severidad es más útil que un
+  auditor que solo suena severo.
 - Retomar días después: ¿se recarga la transcripción entera o un resumen
   destilado? Con sesiones largas la transcripción íntegra no cabrá.
 - ¿El prompt generado es un texto único o un documento estructurado por
