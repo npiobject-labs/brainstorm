@@ -1,0 +1,38 @@
+{
+  "fecha": "2026-09-11T21:46:00+02:00",
+  "titulo": "Los siete prompts de la sesión de Cuaderno de voz",
+  "objetivo": "Dejar escritos los prompts que el usuario escribirá, diálogo a diálogo, para llevar una sesión de brainstorm hasta el prompt de desarrollo de una app de ejemplo.",
+  "prompts": [
+    {
+      "texto": "muestrame el guión de una charla entre tu y yo en 7 conversaciones"
+    },
+    {
+      "texto": "no es eso lo que quiero. Quiero que me des mis conversaciones contigo con 7 dialogos para generar el prompt de \"Cuaderno de voz\""
+    },
+    {
+      "texto": "me parece muy bien, mañana cuando desarrolles la app pasaré este diálogo. Ahora salvalo y cierra sesión"
+    }
+  ],
+  "cambios": [
+    "docs/planificacion/sesion-cuaderno-de-voz-7-prompts.md: los siete prompts copiables (abrir la sesión, crítico y escéptico, analítico y usuario, las decisiones, auditor, generar v1 con linter, descartar con motivo y cerrar con v2 y paquete para Navaja), cada uno con lo que devuelve Claude y lo que queda en la mesa, y la forma esperada del prompt en tres partes.",
+    "docs/planificacion/guion-charla-7-conversaciones.md: creado y descartado en la misma sesión; era una narración a dos voces en vez de los prompts del usuario."
+  ],
+  "sha": "<PENDIENTE>",
+  "sha_completo": "<PENDIENTE>",
+  "run": "<PENDIENTE>",
+  "mock": null,
+  "build": "BR-B1-20260911-003",
+  "pagina": "index.html",
+  "fly": null,
+  "pendiente": [
+    "Confirmar o tumbar las nueve propuestas de la sección 8 del plan.",
+    "Pasar los siete diálogos cuando se desarrolle la app, y lanzar F1 con el prompt de la sección 7 del plan."
+  ],
+  "enlaces": [
+    {
+      "texto": "PR de la sesión",
+      "url": "https://github.com/npiobject-labs/brainstorm/pull/7"
+    }
+  ],
+  "notas": "Los prompts son transcripción literal, sin datos sensibles. El mock no cambió en esta sesión: el build que consta es el del mock 1 publicado el 11 de septiembre."
+}
