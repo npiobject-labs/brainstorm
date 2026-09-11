@@ -1,8 +1,8 @@
 # Brainstorm — recogida de ideas (en curso)
 
 Bitácora literal de lo que va pidiendo el usuario, prompt a prompt.
-No se planifica nada hasta que el usuario diga explícitamente
-"con toda esta información, genérame una planificación del proyecto".
+La planificación se pidió en el prompt 15 y vive en
+[`plan-brainstorm.md`](plan-brainstorm.md); esta recogida sigue abierta.
 
 Regla de trabajo acordada: varios prompts sucesivos de entrada; Claude solo
 almacena y ordena, sin proponer arquitectura ni empezar a implementar.
@@ -223,6 +223,20 @@ Dos decisiones y una pregunta mal formulada que se replantea.
 
 Elige encadenar varios roles en un mismo mensaje: `crítico, auditor:` devuelve
 una respuesta con un bloque por rol, cada uno con su lectura.
+
+## Prompt 15 — 2026-09-11
+
+> Genera una planificación con toda la información que tienes hasta ahora y
+> una vez hecha la planificación genera un MOOC de cómo se verían dicha app
+
+Es la orden que abre la planificación, prevista desde el prompt 1. "MOOC" se
+lee como *mock*, el vocabulario del repo. Resultado:
+[`plan-brainstorm.md`](plan-brainstorm.md) y el mock 1 en `docs/index.html`
+(build `BR-B1-20260911-003`); el mock 0 queda en `docs/mocks/001-mock-0.html`.
+
+El plan cierra con una propuesta cada duda abierta de abajo; las dudas quedan
+aquí tal cual hasta que el usuario confirme o tumbe las propuestas (sección 8
+del plan).
 
 ## Requisitos recogidos
 
