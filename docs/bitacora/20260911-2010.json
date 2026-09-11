@@ -15,18 +15,22 @@
     "docs/planificacion/ideas-brainstorm.md: prompt 15 y enlace al plan.",
     "Build actualizado a BR-B1-20260911-003."
   ],
-  "sha": "367a9de",
-  "sha_completo": "367a9deb7dbc40fcb3c199f49be2db9b40150698",
-  "run": null,
+  "sha": "96eb537",
+  "sha_completo": "96eb537a390d33fe18c0626fe346489f076f4f60",
+  "run": "34637832814",
   "mock": "mocks/001-mock-0.html",
   "build": "BR-B1-20260911-003",
   "pagina": "index.html",
   "fly": null,
   "pendiente": [
     "Confirmar o tumbar las nueve propuestas de la sección 8 del plan (roles, independencia de bloques, formato del prompt, criterios de salida, memoria, reparto con Navaja, ablación, persistencia y arranque de F1).",
-    "Fusionar el PR en main y anotar aquí el run de Pages en verde.",
     "Lanzar F1 con el prompt de la sección 7 del plan."
   ],
-  "enlaces": [],
-  "notas": "El SHA es el de la rama de trabajo; el run de Pages no existe hasta que se fusione en main, porque pages.yml solo publica desde ahí. El campo mock apunta al mock 0 archivado en esta sesión; el mock 1 vive en index.html."
+  "enlaces": [
+    {
+      "texto": "Run de Pages verificado en verde",
+      "url": "https://github.com/npiobject-labs/brainstorm/actions/runs/34637832814"
+    }
+  ],
+  "notas": "El SHA es el del merge en main; el commit de la sesion en la rama fue 367a9de. Verificado por la API de Actions: run 34637832814 en success y despliegue del entorno github-pages en ese mismo SHA, sin ningun run 'pages build and deployment', asi que Pages sirve el artefacto del workflow. El campo mock apunta al mock 0 archivado en esta sesion; el mock 1 vive en index.html."
 }
