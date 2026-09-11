@@ -17,9 +17,9 @@
     "docs/planificacion/sesion-cuaderno-de-voz-7-prompts.md: los siete prompts copiables (abrir la sesión, crítico y escéptico, analítico y usuario, las decisiones, auditor, generar v1 con linter, descartar con motivo y cerrar con v2 y paquete para Navaja), cada uno con lo que devuelve Claude y lo que queda en la mesa, y la forma esperada del prompt en tres partes.",
     "docs/planificacion/guion-charla-7-conversaciones.md: creado y descartado en la misma sesión; era una narración a dos voces en vez de los prompts del usuario."
   ],
-  "sha": "<PENDIENTE>",
-  "sha_completo": "<PENDIENTE>",
-  "run": "<PENDIENTE>",
+  "sha": "d769369",
+  "sha_completo": "d769369edfef76401a8f18a69073b169793bcaf4",
+  "run": "34640711976",
   "mock": null,
   "build": "BR-B1-20260911-003",
   "pagina": "index.html",
@@ -32,7 +32,11 @@
     {
       "texto": "PR de la sesión",
       "url": "https://github.com/npiobject-labs/brainstorm/pull/7"
+    },
+    {
+      "texto": "Run de Pages verificado en verde",
+      "url": "https://github.com/npiobject-labs/brainstorm/actions/runs/34640711976"
     }
   ],
-  "notas": "Los prompts son transcripción literal, sin datos sensibles. El mock no cambió en esta sesión: el build que consta es el del mock 1 publicado el 11 de septiembre."
+  "notas": "Los prompts son transcripción literal, sin datos sensibles. El mock no cambió en esta sesión: el build que consta es el del mock 1 publicado el 11 de septiembre. El SHA es el del merge en main; el commit de la sesion en la rama fue 2794aec. Verificado por la API de Actions: run 34640711976 en success sobre ese SHA. Copias subidas a Drive: el documento de los siete prompts en la carpeta del proyecto y este resumen en sesiones/."
 }
