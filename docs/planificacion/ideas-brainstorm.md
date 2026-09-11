@@ -105,6 +105,43 @@ fuente de verdad, así que no se pierde nada.
 Carpeta `Mi unidad > brainstotm`, id `1FithJGx3HLgPd9H-1VEgwxEfe90Yn1q6`.
 Verificada con acceso de escritura y anotada en `CLAUDE.md`.
 
+## Prompt 10 — 2026-09-11
+
+> los criterios que hacen bueno a un prompt, los tengo ya desarrollados en otra
+> app que ya tienes. La app se llama Boris Cherny. lo que viene a decir es que
+> un prompt consta de tres partes fundamentales, que son el objetivo, el
+> guardarailes y el stop, pero todo eso te lo voy a dar de cierta forma más
+> detallada más adelante. te adjunto un MOCK de la aplicación BorisCherny
+
+Adjunta una captura del mock de esa app (no se guarda en el repo: `docs/` es
+público y la captura muestra una ruta local del PC).
+
+**Anatomía del prompt, según el método**: tres partes fundamentales, objetivo,
+guardarraíles y stop. El detalle llega más adelante.
+
+Lo que se lee en el mock, como referencia de vocabulario y de método:
+
+- La app se llama **Navaja**, con el subtítulo "método Cherny". La pantalla
+  mostrada es el **Asistente de prompt**: "de la idea al prompt", siete fases
+  guiadas, en cada una se propone un borrador y se hacen las preguntas del
+  método; el usuario confirma o corrige.
+- Las siete fases: **Idea, Tarea, Límites, Verificación, Contexto,
+  Herramientas, Resultado**.
+- El "cómo funciona" que describe el propio mock: escribes la idea; se propone
+  la tarea **como resultado, nunca como pasos**; eliges los límites, o sea qué
+  no puede tocar; eliges cómo se verifica (tests, lint, prueba como usuario en
+  navegador); se propone el **CLAUDE.md mínimo**; se recomiendan solo las
+  herramientas que pasan la **regla de Cherny**; y obtienes prompt, CLAUDE.md,
+  herramientas y comando de arranque.
+- El formulario de la fase Idea pide "¿Qué quieres conseguir?", escrito como
+  resultado y con las palabras del usuario, más un proyecto (existente o
+  nuevo) y un campo de stack y dominio, que sirve para proponer límites,
+  verificadores y herramientas.
+- Otras secciones del menú lateral: Panel, Forja de prompts, CLAUDE.md,
+  Verificadores, Ablación, Skills y conectores, Rutinas, Experimentos,
+  Workflows, Renovación, Arranque y prueba, Exportar, Proyectos. Aparece
+  también un "índice de esbeltez" con valor 95/100 y un "mayor lastre".
+
 ## Requisitos recogidos
 
 - **Propósito**: gestionar sesiones de brainstorming en equipo.
@@ -138,6 +175,10 @@ Verificada con acceso de escritura y anotada en `CLAUDE.md`.
 - **Claude plantea dudas y sugerencias**: durante la sesión, no solo responde.
   Saca a la mesa dudas abiertas y funcionalidades que podrían ser interesantes,
   como comportamiento del producto (no solo como estilo de conversación).
+- **Criterios de calidad de un prompt**: vienen del método Cherny, ya
+  desarrollado por el usuario en su app Navaja / BorisCherny. Un prompt son
+  tres partes: **objetivo, guardarraíles y stop**. El detalle lo aportará el
+  usuario más adelante. Brainstorm no reinventa el criterio: lo adopta.
 - **Encargo de diseño**: en la planificación se espera creatividad de Claude en
   el planteamiento de la app, no una transcripción literal de los requisitos.
 
@@ -156,6 +197,18 @@ Verificada con acceso de escritura y anotada en `CLAUDE.md`.
   mismo prompt?
 - ~~¿Se anota el motivo de descarte? ¿Se versionan los prompts?~~ Resuelto en
   el prompt 6: sí a las dos.
-- Pendiente del usuario: los criterios de "lo que voy buscando", es decir,
-  contra qué se juzga si un prompt se acerca o no. Sin eso no hay criterio de
-  aceptación del entregable.
+- Pendiente del usuario: el detalle del método Cherny (objetivo,
+  guardarraíles, stop). Lo esencial ya está nombrado en el prompt 10; falta la
+  definición precisa de cada parte.
+- [SUPUESTO] "otra app que ya tienes" no está en esta sesión: BorisCherny /
+  Navaja vive como fichero local en el PC del usuario y no figura entre los
+  repositorios de GitHub a los que se tiene acceso. Plan B: que el usuario
+  pegue los criterios, suba el HTML del mock, o publique ese proyecto en
+  GitHub para poder leerlo.
+- ¿Brainstorm y Navaja son dos apps separadas que se pasan el testigo
+  (Brainstorm produce el prompt, Navaja lo estructura y lo verifica), o
+  Brainstorm absorbe el método Cherny y genera ya el prompt en sus tres
+  partes? Esto cambia el alcance.
+- Si el prompt generado sigue el método, ¿el entregable incluye también el
+  CLAUDE.md mínimo, los verificadores y el comando de arranque, como en
+  Navaja, o solo el texto del prompt?
