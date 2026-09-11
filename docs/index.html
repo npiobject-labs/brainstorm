@@ -3,25 +3,456 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="build" content="BR-B1-20260910-002">
-  <title>brainstorm · mock 0</title>
+  <meta name="build" content="BR-B1-20260911-003">
+  <meta name="description" content="Mock 1 de Brainstorm: la mesa, los roles por prefijo y las versiones del prompt.">
+  <title>Brainstorm · mock 1: mesa, roles y versiones</title>
   <style>
-    body { font-family: system-ui, -apple-system, sans-serif; margin: 0; padding: 2rem; background: #fafafa; color: #1a1a1a; }
-    main { max-width: 40rem; margin: 0 auto; }
-    h1 { font-size: 1.5rem; margin: 0 0 .5rem; }
-    p { color: #555; line-height: 1.5; }
-    code { background: #eee; padding: .15rem .35rem; border-radius: 3px; }
-    a { color: #0b6e7a; text-underline-offset: 2px; }
-    .enlaces { margin-top: 1.75rem; padding-top: 1.25rem; border-top: 1px solid #e2e2e2; }
+    :root {
+      color-scheme: light dark;
+      --fondo: #f6f5f1; --panel: #ffffff; --tinta: #1c1b18; --tinta2: #5a574f; --tinta3: #8b877c;
+      --linea: #e4e1d8; --acento: #0b6e7a; --acento-suave: #dff1f3; --ambar: #b8721a; --ambar-suave: #fbf0dc;
+      --rojo: #b3392c; --rojo-suave: #f9e3df; --verde: #2d7a46; --verde-suave: #e0f2e6; --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --fondo: #14161a; --panel: #1d2026; --tinta: #ecebe6; --tinta2: #b4b1a8; --tinta3: #7f7c74; --linea: #2d3138;
+        --acento: #7fd4de; --acento-suave: #163c42; --ambar: #e3a24a; --ambar-suave: #3a2c12; --rojo: #f08a7c; --rojo-suave: #46201b; --verde: #7fd39a; --verde-suave: #16331f; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--fondo); color: var(--tinta); font-size: 15px; line-height: 1.45; }
+    a { color: var(--acento); text-underline-offset: 2px; }
+    button { font: inherit; cursor: pointer; }
+    header.app { position: sticky; top: 0; z-index: 5; background: var(--panel); border-bottom: 1px solid var(--linea); padding: .6rem 1rem; display: flex; align-items: center; gap: .75rem; }
+    header.app .logo { font-weight: 700; letter-spacing: .01em; }
+    header.app .logo small { font-weight: 400; color: var(--tinta3); margin-left: .4rem; }
+    header.app .build { margin-left: auto; font-family: var(--mono); font-size: .72rem; color: var(--tinta3); }
+    .wrap { max-width: 44rem; margin: 0 auto; padding: 1rem 1rem 6rem; }
+    .pantalla { display: none; }
+    .pantalla.activa { display: block; }
+    h1 { font-size: 1.25rem; margin: .25rem 0 .25rem; }
+    h2 { font-size: 1rem; margin: 1.25rem 0 .5rem; color: var(--tinta2); text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+    .sub { color: var(--tinta2); margin: 0 0 1rem; }
+    .card { background: var(--panel); border: 1px solid var(--linea); border-radius: 10px; padding: .85rem 1rem; margin-bottom: .6rem; }
+    .card.presionable { cursor: pointer; }
+    .card.presionable:hover { border-color: var(--acento); }
+    .fila { display: flex; align-items: center; gap: .5rem; flex-wrap: wrap; }
+    .fila.sep { justify-content: space-between; }
+    .meta { color: var(--tinta3); font-size: .82rem; }
+    .pill { display: inline-block; font-size: .72rem; padding: .12rem .5rem; border-radius: 999px; border: 1px solid var(--linea); color: var(--tinta2); white-space: nowrap; }
+    .pill.rol { background: var(--acento-suave); color: var(--acento); border-color: transparent; font-weight: 600; }
+    .pill.claude { background: var(--ambar-suave); color: var(--ambar); border-color: transparent; }
+    .pill.usuario { background: var(--verde-suave); color: var(--verde); border-color: transparent; }
+    .pill.duda { background: var(--rojo-suave); color: var(--rojo); border-color: transparent; }
+    .pill.ok { background: var(--verde-suave); color: var(--verde); border-color: transparent; }
+    .pill.falta { background: var(--rojo-suave); color: var(--rojo); border-color: transparent; }
+    .pill.gris { color: var(--tinta3); }
+    .btn { border: 1px solid var(--linea); background: var(--panel); color: var(--tinta); border-radius: 8px; padding: .45rem .8rem; font-size: .88rem; }
+    .btn.p { background: var(--acento); border-color: var(--acento); color: #fff; }
+    @media (prefers-color-scheme: dark) { .btn.p { color: #0f1b1d; } }
+    .btn.sm { padding: .25rem .55rem; font-size: .78rem; }
+    .btn.peligro { color: var(--rojo); }
+    /* pestañas de sesión */
+    .tabs { display: flex; gap: .25rem; border-bottom: 1px solid var(--linea); margin: .75rem 0 1rem; }
+    .tabs button { background: none; border: 0; border-bottom: 2px solid transparent; padding: .5rem .75rem; color: var(--tinta2); font-weight: 500; }
+    .tabs button.activa { color: var(--acento); border-bottom-color: var(--acento); }
+    .vista { display: none; }
+    .vista.activa { display: block; }
+    /* mesa */
+    .cobertura { display: flex; gap: .35rem; flex-wrap: wrap; }
+    .ficha { display: grid; grid-template-columns: 1fr auto; gap: .25rem .75rem; padding: .6rem 0; border-bottom: 1px solid var(--linea); }
+    .ficha:last-child { border-bottom: 0; }
+    .ficha .texto { grid-column: 1 / -1; }
+    .ficha .texto.tachada { text-decoration: line-through; color: var(--tinta3); }
+    .ficha .autoria { display: flex; gap: .35rem; align-items: center; flex-wrap: wrap; }
+    /* conversación */
+    .msg { margin-bottom: .9rem; }
+    .msg .quien { font-size: .78rem; color: var(--tinta3); margin-bottom: .2rem; display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+    .burbuja { background: var(--panel); border: 1px solid var(--linea); border-radius: 12px; padding: .7rem .9rem; }
+    .msg.usuario .burbuja { background: var(--verde-suave); border-color: transparent; }
+    .msg.usuario .burbuja .prefijo { font-family: var(--mono); font-weight: 600; color: var(--verde); }
+    .bloque { border-left: 3px solid var(--acento); padding: .35rem .75rem; margin: .5rem 0; }
+    .bloque .cab { font-size: .78rem; font-weight: 700; color: var(--acento); text-transform: uppercase; letter-spacing: .05em; margin-bottom: .2rem; }
+    .bloque ul, .burbuja ul { margin: .2rem 0 .2rem 1.1rem; padding: 0; }
+    .bloque li, .burbuja li { margin: .15rem 0; }
+    .bloque .sev { font-family: var(--mono); font-size: .72rem; padding: 0 .3rem; border-radius: 4px; background: var(--rojo-suave); color: var(--rojo); margin-right: .3rem; }
+    .bloque .sev.media { background: var(--ambar-suave); color: var(--ambar); }
+    .propuestas { margin-top: .6rem; padding-top: .5rem; border-top: 1px dashed var(--linea); }
+    .propuestas .t { font-size: .78rem; color: var(--tinta3); margin-bottom: .3rem; }
+    .propuesta { display: flex; gap: .5rem; align-items: flex-start; margin: .3rem 0; }
+    .propuesta .btn { flex-shrink: 0; }
+    .iniciativa { background: var(--ambar-suave); border: 1px solid transparent; border-radius: 8px; padding: .4rem .7rem; font-size: .82rem; color: var(--ambar); margin-bottom: .4rem; }
+    .destilado { background: var(--acento-suave); border: 0; }
+    .destilado .t { font-weight: 700; color: var(--acento); }
+    .destilado ol { margin: .4rem 0 0 1.1rem; padding: 0; }
+    .compositor { position: fixed; bottom: 0; left: 0; right: 0; background: var(--panel); border-top: 1px solid var(--linea); padding: .6rem 1rem; }
+    .compositor .inner { max-width: 44rem; margin: 0 auto; display: flex; gap: .5rem; align-items: flex-end; }
+    .compositor textarea { flex: 1; resize: none; font: inherit; border: 1px solid var(--linea); border-radius: 10px; padding: .5rem .7rem; background: var(--fondo); color: var(--tinta); min-height: 2.6rem; }
+    .compositor .ayuda { max-width: 44rem; margin: .3rem auto 0; font-size: .74rem; color: var(--tinta3); }
+    .compositor .ayuda code { font-family: var(--mono); }
+    /* prompts */
+    .version { display: grid; grid-template-columns: auto 1fr auto; gap: .25rem .75rem; align-items: start; }
+    .version .n { font-family: var(--mono); font-weight: 700; }
+    .version .motivo { grid-column: 2 / -1; font-size: .88rem; color: var(--tinta2); }
+    .version .motivo b { color: var(--rojo); font-weight: 600; }
+    .lint { display: grid; gap: .3rem; font-size: .86rem; }
+    .lint div::before { content: "●"; margin-right: .45rem; color: var(--verde); }
+    .lint div.mal::before { color: var(--rojo); }
+    .lint div.aviso::before { color: var(--ambar); }
+    pre.prompt { font-family: var(--mono); font-size: .8rem; white-space: pre-wrap; background: var(--fondo); border: 1px solid var(--linea); border-radius: 8px; padding: .8rem; margin: 0; overflow-x: auto; }
+    pre.prompt .k { color: var(--acento); font-weight: 700; }
+    pre.prompt .corte { color: var(--tinta3); }
+    .pie { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--linea); font-size: .82rem; color: var(--tinta3); }
+    .pie a { margin-right: .6rem; }
   </style>
 </head>
 <body>
-  <main>
-    <h1>brainstorm · mock 0</h1>
-    <p>Fase 0 del flujo «PC arranca, móvil continúa».</p>
-    <p>Build: <code>BR-B1-20260910-002</code></p>
-    <p class="enlaces"><a href="bitacora.html">Bitácora del proyecto</a> · cada sesión de trabajo, qué se pidió y qué cambió.<br>
-    <a href="holamundo.html">Comprobación del backend</a> · Pages llama a <code>/holamundo</code> y <code>/salud</code> en Fly.</p>
-  </main>
+<header class="app">
+  <span class="logo">Brainstorm <small>mock 1</small></span>
+  <span class="build">BR-B1-20260911-003</span>
+</header>
+
+<div class="wrap">
+
+<!-- ========================= PANTALLA 1: SESIONES ========================= -->
+<section class="pantalla activa" id="p-sesiones">
+  <h1>Sesiones</h1>
+  <p class="sub">Cada sesión es una app por pensar. La mesa guarda lo aportado; el prompt sale de la mesa.</p>
+
+  <div class="card presionable" data-ir="p-sesion">
+    <div class="fila sep">
+      <strong>Brainstorm</strong>
+      <span class="pill">en curso</span>
+    </div>
+    <div class="meta">Retomada hoy · última actividad hace 3 días · 14 fichas · 3 versiones · 2 dudas abiertas</div>
+    <div class="fila" style="margin-top:.5rem">
+      <button class="btn p sm" data-ir="p-sesion">Retomar</button>
+      <span class="meta">Cobertura de lentes: 4 de 6</span>
+    </div>
+  </div>
+
+  <div class="card presionable">
+    <div class="fila sep">
+      <strong>Navaja · import del paquete</strong>
+      <span class="pill">prompt entregado</span>
+    </div>
+    <div class="meta">Cerrada hace 9 días · 9 fichas · v2 aceptada</div>
+  </div>
+
+  <div class="card presionable">
+    <div class="fila sep">
+      <strong>Rutina de poda semanal</strong>
+      <span class="pill gris">borrador</span>
+    </div>
+    <div class="meta">Creada hace 12 días · 2 fichas · sin versiones</div>
+  </div>
+
+  <div class="fila" style="margin-top:1rem">
+    <button class="btn p">Nueva sesión</button>
+  </div>
+
+  <p class="pie">
+    <a href="bitacora.html">Bitácora</a>
+    <a href="mocks/">Mocks archivados</a>
+    <a href="holamundo.html">Comprobación del backend</a><br>
+    Mock estático: los botones cambian de pantalla, nada se guarda. Plan en <code>docs/planificacion/plan-brainstorm.md</code>.
+  </p>
+</section>
+
+<!-- ========================= PANTALLA 2: SESIÓN ========================= -->
+<section class="pantalla" id="p-sesion">
+  <div class="fila sep">
+    <button class="btn sm" data-ir="p-sesiones">← Sesiones</button>
+    <span class="meta">Retomada tras 3 días</span>
+  </div>
+  <h1>Brainstorm</h1>
+  <p class="sub" style="margin-bottom:0">App para llegar, entre dos, a la idea de una app y entregarla como prompt para Fable 5.1.</p>
+
+  <nav class="tabs">
+    <button class="activa" data-vista="v-mesa">Mesa <span class="pill gris">14</span></button>
+    <button data-vista="v-conv">Conversación</button>
+    <button data-vista="v-prompts">Prompts <span class="pill gris">v3</span></button>
+  </nav>
+
+  <!-- ---------- VISTA: MESA ---------- -->
+  <div class="vista activa" id="v-mesa">
+    <div class="card">
+      <div class="fila sep">
+        <strong>Cobertura de lentes</strong>
+        <span class="meta">roles que ya han pasado por la mesa</span>
+      </div>
+      <div class="cobertura" style="margin-top:.5rem">
+        <span class="pill ok">crítico</span>
+        <span class="pill ok">analítico</span>
+        <span class="pill ok">creativo</span>
+        <span class="pill ok">auditor</span>
+        <span class="pill falta">usuario</span>
+        <span class="pill falta">escéptico</span>
+      </div>
+      <div class="meta" style="margin-top:.5rem">Claude propondrá <b>usuario:</b> en el próximo turno si nadie lo invoca antes.</div>
+    </div>
+
+    <h2>Dudas abiertas <span class="pill duda">2</span></h2>
+    <div class="card">
+      <div class="ficha">
+        <div class="autoria"><span class="pill duda">duda</span><span class="pill claude">claude</span><span class="pill rol">auditor</span></div>
+        <button class="btn sm">Resolver</button>
+        <div class="texto">¿Qué cuenta como criterio de salida verificable para una app que todavía no existe?</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill duda">duda</span><span class="pill claude">claude</span><span class="pill rol">crítico</span></div>
+        <button class="btn sm">Resolver</button>
+        <div class="texto">Con roles encadenados, el segundo bloque tiende a alinearse con el primero. ¿La app fuerza la independencia?</div>
+      </div>
+    </div>
+
+    <h2>Decisiones <span class="pill gris">4</span></h2>
+    <div class="card">
+      <div class="ficha">
+        <div class="autoria"><span class="pill">decisión</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 6</span>
+        <div class="texto">El prompt se redacta para Fable 5.1. Cada generación se guarda como versión con el motivo de descarte.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">decisión</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 13</span>
+        <div class="texto">Sin prefijo, respuesta normal. Claude puede invocar un rol por iniciativa propia avisando.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">decisión</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 14</span>
+        <div class="texto">Varios roles en un mensaje devuelven un bloque por rol, no una mezcla.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">decisión</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 11</span>
+        <div class="texto">La calidad de un prompt la fija el método Cherny: tarea, límites y terminado cuando, sin pasos.</div>
+      </div>
+    </div>
+
+    <h2>Funcionalidades <span class="pill gris">4</span></h2>
+    <div class="card">
+      <div class="ficha">
+        <div class="autoria"><span class="pill">funcionalidad</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 12</span>
+        <div class="texto">Roles por prefijo: <code>crítico:</code>, <code>auditor:</code>… al principio del mensaje.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">funcionalidad</span><span class="pill claude">claude</span><span class="pill rol">creativo</span></div>
+        <span class="meta">aceptada</span>
+        <div class="texto">Cada rol lleva un formato de salida propio: el auditor devuelve hallazgos con severidad, no solo tono.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">funcionalidad</span><span class="pill claude">claude</span><span class="pill rol">analítico</span></div>
+        <span class="meta">aceptada</span>
+        <div class="texto">El motivo de descarte de una versión se convierte en ficha de criterio para la siguiente.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">funcionalidad</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 4</span>
+        <div class="texto">Una sesión se retoma días después sin perder contexto.</div>
+      </div>
+    </div>
+
+    <h2>Límites <span class="pill gris">2</span></h2>
+    <div class="card">
+      <div class="ficha">
+        <div class="autoria"><span class="pill">límite</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">prompt 5</span>
+        <div class="texto">Brainstorm genera el prompt, nunca la app.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">límite</span><span class="pill claude">claude</span><span class="pill rol">auditor</span></div>
+        <span class="meta">aceptada</span>
+        <div class="texto">Claude nunca escribe en la mesa sin confirmación del usuario.</div>
+      </div>
+    </div>
+
+    <h2>Criterios <span class="pill gris">2</span></h2>
+    <div class="card">
+      <div class="ficha">
+        <div class="autoria"><span class="pill">criterio</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">de descartar v1</span>
+        <div class="texto">Un prompt bueno no lleva pasos: si la tarea dice "primero… luego…", sobra.</div>
+      </div>
+      <div class="ficha">
+        <div class="autoria"><span class="pill">criterio</span><span class="pill usuario">usuario</span></div>
+        <span class="meta">de descartar v2</span>
+        <div class="texto">"Terminado cuando" tiene que ser un comando o un guion con resultado observable, no "que funcione bien".</div>
+      </div>
+    </div>
+
+    <h2>Descartadas <span class="pill gris">1</span></h2>
+    <div class="card">
+      <div class="ficha">
+        <div class="autoria"><span class="pill">idea</span><span class="pill claude">claude</span><span class="pill rol">creativo</span></div>
+        <span class="meta">descartada</span>
+        <div class="texto tachada">Votación entre participantes para priorizar fichas.</div>
+        <div class="meta" style="grid-column:1/-1">Motivo: somos dos, no hace falta votar.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- VISTA: CONVERSACIÓN ---------- -->
+  <div class="vista" id="v-conv">
+    <div class="card destilado">
+      <div class="t">Han pasado 3 días. Esto es lo que hay</div>
+      <div class="meta" style="margin-top:.2rem">Destilado escrito por Claude al cerrar la última jornada · 9 líneas</div>
+      <ol>
+        <li>Quedó decidido el mecanismo de roles: prefijo, un bloque por rol, iniciativa propia avisando.</li>
+        <li>El método Cherny fija la calidad del prompt; Brainstorm lo adopta, no lo reinventa.</li>
+        <li>v2 se descartó porque el "terminado cuando" era opinable.</li>
+        <li>Abiertas: criterio de salida para apps nuevas, e independencia de bloques encadenados.</li>
+        <li>Faltan las lentes <b>usuario</b> y <b>escéptico</b>.</li>
+      </ol>
+    </div>
+
+    <div class="msg usuario">
+      <div class="quien">Tú · hace 3 días</div>
+      <div class="burbuja"><span class="prefijo">crítico, auditor:</span> quiero que el prompt final incluya también el CLAUDE.md mínimo y los verificadores, como hace Navaja.</div>
+    </div>
+
+    <div class="msg claude">
+      <div class="quien">Claude · 2 bloques generados por separado</div>
+      <div class="burbuja">
+        <div class="bloque">
+          <div class="cab">crítico</div>
+          <ul>
+            <li>Duplica a Navaja: ella ya produce CLAUDE.md, verificadores y arranque a partir de una idea formada. Ataca la ficha "Brainstorm genera el prompt, nunca la app".</li>
+            <li>Un prompt con CLAUDE.md dentro deja de ser un prompt de tres partes y pasa a ser un paquete. Ataca la decisión del prompt 11.</li>
+          </ul>
+        </div>
+        <div class="bloque">
+          <div class="cab">auditor</div>
+          <ul>
+            <li><span class="sev">alta</span> La mesa no tiene ningún criterio de salida ejecutable. Evidencia: cero fichas de tipo criterio con un comando.</li>
+            <li><span class="sev media">media</span> No hay ficha que fije el reparto entre Brainstorm y Navaja. Evidencia: la duda sigue abierta desde el prompt 11.</li>
+          </ul>
+        </div>
+        <div class="propuestas">
+          <div class="t">Propuestas para la mesa</div>
+          <div class="propuesta"><button class="btn sm">A la mesa</button><span><b>límite</b> · Navaja no se toca en este proyecto; el testigo es un paquete exportable.</span></div>
+          <div class="propuesta"><button class="btn sm">A la mesa</button><span><b>duda</b> · ¿El paquete lo importa Navaja o se pega a mano en su fase Idea?</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="msg usuario">
+      <div class="quien">Tú · hoy</div>
+      <div class="burbuja">vale, dos apps separadas. El paquete se pega a mano de momento.</div>
+    </div>
+
+    <div class="msg claude">
+      <div class="quien">Claude · respuesta normal</div>
+      <div class="iniciativa">Claude invoca <b>usuario:</b> por iniciativa propia · esa lente no ha pasado por la mesa en toda la sesión.</div>
+      <div class="burbuja">
+        Anotado como decisión: dos apps, testigo manual. Cierra la duda de arriba.
+        <div class="bloque">
+          <div class="cab">usuario</div>
+          Soy tú, un jueves por la noche desde el móvil, y quiero retomar esta sesión. Lo primero que necesito no es el chat: es saber qué decidimos y qué quedó abierto, en diez líneas. Si tengo que hacer scroll por 80 mensajes, no retomo, abandono. Lo que me frustra: que el prompt se genere sin avisarme de que hay dudas abiertas y luego descubrirlo al pegarlo en Fable.
+        </div>
+        <div class="propuestas">
+          <div class="t">Propuestas para la mesa</div>
+          <div class="propuesta"><button class="btn sm">A la mesa</button><span><b>funcionalidad</b> · Tarjeta de destilado al retomar, menos de 40 líneas, antes que el chat.</span></div>
+          <div class="propuesta"><button class="btn sm">A la mesa</button><span><b>límite</b> · Generar con dudas abiertas exige confirmación explícita.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- VISTA: PROMPTS ---------- -->
+  <div class="vista" id="v-prompts">
+    <div class="card">
+      <div class="fila sep">
+        <strong>Versiones</strong>
+        <button class="btn p sm">Generar v4 con la mesa actual</button>
+      </div>
+      <div class="meta" style="margin:.25rem 0 .6rem">Antes de generar: 2 dudas abiertas y 2 lentes sin aplicar. Se avisará.</div>
+
+      <div class="version" style="padding:.5rem 0;border-top:1px solid var(--linea)">
+        <span class="n">v3</span><span><span class="pill ok">actual</span> <span class="meta">hoy · 12 fichas · linter 3/4</span></span><button class="btn sm">Ver</button>
+      </div>
+      <div class="version" style="padding:.5rem 0;border-top:1px solid var(--linea)">
+        <span class="n">v2</span><span><span class="pill">descartada</span> <span class="meta">hace 3 días · 10 fichas</span></span><button class="btn sm">Diff con v3</button>
+        <div class="motivo"><b>Motivo:</b> el "terminado cuando" decía "que funcione bien"; no es verificable. → ficha de criterio creada.</div>
+      </div>
+      <div class="version" style="padding:.5rem 0;border-top:1px solid var(--linea)">
+        <span class="n">v1</span><span><span class="pill">descartada</span> <span class="meta">hace 4 días · 7 fichas</span></span><button class="btn sm">Diff con v2</button>
+        <div class="motivo"><b>Motivo:</b> la tarea traía pasos ("primero el backend, luego la pantalla"). → ficha de criterio creada.</div>
+      </div>
+    </div>
+
+    <h2>v3 · linter</h2>
+    <div class="card">
+      <div class="lint">
+        <div>Tarea en 2 frases, sin verbos de paso.</div>
+        <div>Límites: 3 fichas aceptadas.</div>
+        <div>Terminado cuando: 2 criterios ejecutables y 1 guion de prueba.</div>
+        <div class="aviso">2 dudas abiertas entraron como límite "no decidir".</div>
+      </div>
+    </div>
+
+    <h2>v3 · prompt para Fable 5.1</h2>
+    <div class="card">
+<pre class="prompt"><span class="k">Tarea:</span> construye Brainstorm, una app web para que una persona y
+Claude lleguen entre los dos a la idea de una app y la entreguen como
+prompt de tres partes para Fable 5.1, con sesiones que se retoman días
+después, roles por prefijo con un bloque por rol y versiones del prompt
+con motivo de descarte.
+
+<span class="k">Límites:</span> la app produce prompts, nunca apps; Claude no escribe en la
+mesa sin confirmación; ninguna clave en docs/; no decidir el formato del
+paquete para Navaja ni el criterio de salida de apps nuevas.
+
+<span class="k">Terminado cuando:</span> `cargo test` en verde con tests de sesiones, fichas,
+mensajes con dos roles y versiones con descarte; `tests/e2e/usuario.spec.ts`
+pasa: crea sesión, envía "crítico, auditor: …", acepta una propuesta,
+genera v1, la descarta con motivo y comprueba la ficha de criterio; guion
+de 5 pasos en móvil desde Pages, cada paso con resultado observable.
+
+<span class="corte">--- Anexos (recortables) ---</span>
+<span class="k">Contexto:</span> backend axum + tokio en app/, SQLite en /data, frontend sin
+build en docs/ llamando a Fly con CORS, modelo claude-fable-5-1.
+<span class="k">Pantallas:</span> Sesiones; Sesión con Mesa, Conversación y Prompts.
+<span class="k">Fuera de alcance:</span> multiusuario real, importar fichas entre sesiones,
+cualquier cambio en Navaja.</pre>
+      <div class="fila" style="margin-top:.6rem">
+        <button class="btn p sm">Copiar prompt</button>
+        <button class="btn sm">Copiar sin anexos</button>
+        <button class="btn sm">Aceptar v3</button>
+        <button class="btn sm peligro">Descartar con motivo</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="compositor" id="compositor">
+    <div class="inner">
+      <textarea rows="1" placeholder="escéptico: ¿por qué no bastaría con un chat y un documento?"></textarea>
+      <button class="btn p">Enviar</button>
+    </div>
+    <div class="ayuda">Prefijo <code>rol:</code> para una lente; <code>crítico, auditor:</code> para varias, un bloque por rol. Sin prefijo, respuesta normal.</div>
+  </div>
+</section>
+
+</div>
+
+<script>
+  (function () {
+    var ir = function (id) {
+      document.querySelectorAll('.pantalla').forEach(function (p) { p.classList.toggle('activa', p.id === id); });
+      window.scrollTo(0, 0);
+    };
+    document.querySelectorAll('[data-ir]').forEach(function (el) {
+      el.addEventListener('click', function (ev) { ev.stopPropagation(); ir(el.getAttribute('data-ir')); });
+    });
+    document.querySelectorAll('.tabs button').forEach(function (b) {
+      b.addEventListener('click', function () {
+        document.querySelectorAll('.tabs button').forEach(function (x) { x.classList.toggle('activa', x === b); });
+        var id = b.getAttribute('data-vista');
+        document.querySelectorAll('.vista').forEach(function (v) { v.classList.toggle('activa', v.id === id); });
+        document.getElementById('compositor').style.display = (id === 'v-conv') ? '' : 'none';
+      });
+    });
+    document.getElementById('compositor').style.display = 'none';
+  })();
+</script>
 </body>
 </html>
